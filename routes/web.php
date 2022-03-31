@@ -26,3 +26,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('auth', [\App\Http\Controllers\AuthController::class, 'auth']);
 Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+Route::get('admin', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard']);
+Route::get('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'index']);
+Route::get('admin/articles/create', [\App\Http\Controllers\Admin\ArticleController::class, 'create']);
+Route::post('admin/articles/store', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])
+    ->name('admin.store_article');
+Route::get('admin/articles/{id}/edit', [\App\Http\Controllers\Admin\ArticleController::class, 'edit'])
+    ->name('admin.edit_article');
+Route::put('admin/articles/{id}/update', [\App\Http\Controllers\Admin\ArticleController::class, 'update'])
+    ->name('admin.update_article');
+Route::delete('admin/articles/{id}/delete', [\App\Http\Controllers\Admin\ArticleController::class, 'delete'])
+    ->name('admin.delete_article');
