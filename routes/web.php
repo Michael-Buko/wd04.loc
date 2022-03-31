@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('auth', [\App\Http\Controllers\AuthController::class, 'auth']);
+
 Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::get('admin', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard']);
