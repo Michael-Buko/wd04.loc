@@ -5,7 +5,7 @@
         <h3 class="head-top">Counries</h3>
         <div class="but_list">
             <div class="col-md-12 page_1">
-                <p><a href="{{ route('countries.create') }}"
+                <p><a href="{{ route('admin.countries.create') }}"
                       class="btn btn-lg btn-info">Создать запись</a></p>
                 <table class="table table-bordered">
                     <thead>
@@ -22,8 +22,8 @@
                             <td>{{ $country->code }}</td>
                             <td>
                                 <form method="POST"
-                                      action="{{ route('countries.delete', ['id'=> $country->id ]) }}">
-                                <a href="{{ route('countries.edit', ['id'=> $country->id ]) }}"
+                                      action="{{ route('admin.countries.destroy', ['country'=> $country]) }}">
+                                <a href="{{ route('admin.countries.edit', ['country'=> $country]) }}"
                                    class="btn btn-lg btn-info">Редактировать</a>
                                     @method('DELETE')
                                     @csrf
