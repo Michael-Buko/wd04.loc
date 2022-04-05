@@ -22,6 +22,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         Article::create($request->all());
+        return redirect()->route('admin.articles');
     }
 
     public function edit(Request $request, $id)
@@ -35,11 +36,13 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $article->fill($request->all());
         $article->save();
+        return redirect()->route('admin.articles');
     }
 
     public function delete($id)
     {
         $article = Article::find($id);
         $article->delete();
+        return redirect()->route('admin.articles');
     }
 }
