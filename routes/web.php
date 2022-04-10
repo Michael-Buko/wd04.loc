@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,15 +43,8 @@ Route::put('admin/articles/{id}/update', [\App\Http\Controllers\Admin\ArticleCon
 Route::delete('admin/articles/{id}/delete', [\App\Http\Controllers\Admin\ArticleController::class, 'delete'])
     ->name('admin.delete_article');
 
-Route::get('countries', [\App\Http\Controllers\CountryController::class, 'index'])
-    ->name('countries.index');
-Route::get('countries/create', [\App\Http\Controllers\CountryController::class, 'create'])
-    ->name('countries.create');
-Route::post('countries/store', [\App\Http\Controllers\CountryController::class, 'store'])
-    ->name('countries.store');
-Route::get('counties/{id}/edit', [\App\Http\Controllers\CountryController::class, 'edit'])
-    ->name('countries.edit');
-Route::put('countries/{id}/update', [\App\Http\Controllers\CountryController::class, 'update'])
-    ->name('countries.update');
-Route::delete('countries/{id}/delete', [\App\Http\Controllers\CountryController::class, 'delete'])
-    ->name('countries.delete');
+Route::name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::resource('countries', CountryController::class)->except(['show']);
+    });
