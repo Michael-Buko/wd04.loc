@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CountryController;
 
@@ -14,20 +15,11 @@ use App\Http\Controllers\Admin\CountryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\SiteController::class, 'index']);
 
-Route::get('my-first-page', [\App\Http\Controllers\MyController::class, 'myPage']);
-
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::post('auth', [\App\Http\Controllers\AuthController::class, 'auth']);
-
-Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::get('admin', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard']);
 Route::get('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])
@@ -47,4 +39,10 @@ Route::name('admin.')
     ->prefix('admin')
     ->group(function () {
         Route::resource('countries', CountryController::class)->except(['show']);
+    });
+
+Route::name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class)->except(['show']);
     });

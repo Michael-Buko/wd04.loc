@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <h1> <a class="navbar-brand" href="index.html">Minimal</a></h1>
+            <h1> <a class="navbar-brand" href="/admin">Minimal</a></h1>
         </div>
         <div class=" border-bottom">
             <div class="full-left">
@@ -161,6 +161,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="index.html" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('admin.articles') }}" class=" hvr-bounce-to-right"><i class="fa fa-file-o nav_icon"></i> <span class="nav-label">Статьи</span> </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.countries.index') }}" class=" hvr-bounce-to-right"><i class="fa fa-file-o nav_icon"></i> <span class="nav-label">Страны</span> </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.category.index') }}" class=" hvr-bounce-to-right"><i class="fa fa-file-o nav_icon"></i> <span class="nav-label">Категории товаров</span> </a>
+                        </li>
                         <li>
                             <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Menu Levels</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
