@@ -7,13 +7,13 @@
 
         <div class="but_list">
             <div class="col-md-12 page_1">
-                <p><a href="{{ route('admin.category.create') }}" class="btn btn-info"> Создать</a> </p>
+                <p><a href="{{ route('admin.category.create') }}" class="btn btn-info"> Создать</a></p>
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th >#</th>
-                        <th >Название категории</th>
-                        <th > Действия</th>
+                        <th>#</th>
+                        <th>Название категории</th>
+                        <th> Действия</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -22,8 +22,10 @@
                             <td> {{$loop->iteration}}</td>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <form method="POST" action="{{ route('admin.category.destroy', ['category'=> $category ]) }}">
-                                <a href="{{ route('admin.category.edit', ['category'=> $category ]) }}" class="btn btn-lg btn-info">Редактировать</a>
+                                <form method="POST"
+                                      action="{{ route('admin.category.destroy', ['category'=> $category ]) }}">
+                                    <a href="{{ route('admin.category.edit', ['category'=> $category ]) }}"
+                                       class="btn btn-lg btn-info">Редактировать</a>
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-lg btn-danger">Удалить</button>
@@ -35,8 +37,9 @@
                     </tbody>
                 </table>
             </div>
+            {{ $categories->links('partials.pagination') }}
 
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 @endsection

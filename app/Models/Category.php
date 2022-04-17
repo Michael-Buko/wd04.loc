@@ -12,5 +12,13 @@ class Category extends Model
 
     protected $fillable = ['name', 'img', 'parent_id'];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
