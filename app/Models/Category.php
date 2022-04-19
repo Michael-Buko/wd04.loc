@@ -21,4 +21,12 @@ class Category extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function getImgAttribute(){
+        if (!empty($this->attributes['img'])){
+            return $this->attributes['img'];
+        }
+        return 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
+    }
+
 }

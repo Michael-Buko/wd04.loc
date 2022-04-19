@@ -14,7 +14,7 @@
                     <input type="text" name="name" class="form-control"  value="{{$category->name}}">
                 </div>
                 @if($category->img)
-                    <img src="{{asset($category->img)}}" alt="">
+                    <img src="{{asset($category->img)}}" style="max-width: 200px" alt="">
                 @endif
                 <div class="form-group">
                     <label >Изображение </label>
