@@ -46,3 +46,9 @@ Route::name('admin.')
     ->group(function () {
         Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class)->except(['show']);
     });
+
+Route::name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class)->except(['show']);
+    });
