@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,14 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        Category::create($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('categories', $file, $fileName);
+            $data['img'] = Storage::url('categories/'.$fileName);
+        }
+        Category::create($data);
         return redirect()->route('admin.category.index');
     }
 
@@ -77,7 +85,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->fill($request->all())->save();
+        $data = $request->all();
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('categories', $file, $fileName);
+            $data['img'] = Storage::url('categories/'.$fileName);
+        }
+
+        $category->fill($data)->save();
         return redirect()->route('admin.category.index');
     }
 

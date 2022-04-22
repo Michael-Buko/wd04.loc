@@ -18,7 +18,7 @@ class AuthController extends Controller
         Auth::attempt($request->only(['email', 'password']));
     }
 
-    public function logout(Request $request){
+    public function logout(){
         Auth::logout();
     }
 }

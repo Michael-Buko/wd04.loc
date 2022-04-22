@@ -13,6 +13,7 @@
                     <tr>
                         <th>#</th>
                         <th>Название категории</th>
+                        <th >Изображение категории</th>
                         <th> Действия</th>
                     </tr>
                     </thead>
@@ -21,6 +22,7 @@
                         <tr>
                             <td> {{$loop->iteration}}</td>
                             <td>{{ $category->name }}</td>
+                            <td><img src="{{ asset($category->img) }}" style="max-width: 100px"></td>
                             <td>
                                 <form method="POST"
                                       action="{{ route('admin.category.destroy', ['category'=> $category ]) }}">
