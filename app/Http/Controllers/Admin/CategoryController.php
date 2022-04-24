@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $data = $request->all();
         if ($request->hasFile('image')){
             $file = $request->file('image');
-            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $fileName = $request->name.'.'.$file->getClientOriginalExtension();
             Storage::disk('public')->putFileAs('categories', $file, $fileName);
             $data['img'] = Storage::url('categories/'.$fileName);
         }

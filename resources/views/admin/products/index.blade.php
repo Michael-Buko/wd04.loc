@@ -12,7 +12,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Название категории</th>
+                        <th>Название товара</th>
+                        <th>Изображения товара</th>
                         <th> Действия</th>
                     </tr>
                     </thead>
@@ -21,6 +22,13 @@
                         <tr>
                             <td> {{$loop->iteration}}</td>
                             <td>{{ $product->name }}</td>
+                            <td>
+                                @foreach($images as $image)
+                                    @if ($image->imageable_id == $product->id)
+                                        <img src="{{ asset($image->path) }}" style="max-width: 100px; max-height: 100px">
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>
                                 <form method="POST"
                                       action="{{ route('admin.product.destroy', ['product'=> $product ]) }}">
