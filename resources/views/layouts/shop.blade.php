@@ -165,7 +165,12 @@
                             <div class="nav-item nav-link">{{ \App\Models\User::query()
                                     ->find(\Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())
                                      ->name}}</div>
-                            <a href="{{ route('logout') }}" class="nav-item nav-link">Logout</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="nav-item nav-link" style="border: 0; background: none">
+                                    Logout
+                                </button>
+                            </form>
                         @endauth
                     </div>
                 </div>

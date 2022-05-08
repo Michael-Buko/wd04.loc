@@ -6,7 +6,8 @@
     <div class="grid-form">
         <div class="grid-form1">
             <h3 id="forms-example" class="">Редактирование карточки товара</h3>
-            <form action="{{ route('admin.product.update', compact('product')) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.product.update', compact('product')) }}" method="POST"
+                  enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
@@ -23,13 +24,19 @@
                     <label>Цена</label>
                     <input type="text" name="price" class="form-control" value="{{$product->price}}">
                 </div>
-                @if($product->img)
-                    <img src="{{asset($product->img)}}" alt="">
-                @endif
+
                 <div class="form-group">
                     <label>Изображение </label>
-                    <input type="file" name="img" class="form-control">
+                    @foreach($imagesTemp as $image)
+                        <input type="file" name="img{{$loop->iteration}}" class="form-control">
+                        @if (!empty($image))
+                            <img src="{{ asset($image->path) }}" style="max-width: 100px; max-height: 100px">
+                        @else
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" style="max-width: 100px; max-height: 100px">
+                        @endif
+                    @endforeach
                 </div>
+
 
                 <div class="form-group">
                     <label>Категория товара</label>

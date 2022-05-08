@@ -22,7 +22,11 @@
                 </div>
                 <div class="form-group">
                     <label >Изображение </label>
-                    <input type="file" name="img" class="form-control"  >
+                    <input type="file" name="img1" class="form-control">
+                    <input type="file" name="img2" class="form-control">
+                    <input type="file" name="img3" class="form-control">
+                    <input type="file" name="img4" class="form-control">
+                    <input type="file" name="img5" class="form-control">
                 </div>
 
                 <div class="form-group">
