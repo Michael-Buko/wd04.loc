@@ -15,6 +15,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href="{{ asset('/assets/admin/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css' />
+
+    <link href="{{ asset('/assets/admin/css/exchange.css') }}" rel='stylesheet' type='text/css' />
+
     <!-- Custom Theme files -->
     <link href="{{ asset('/assets/admin/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('/assets/admin/css/font-awesome.css') }}" rel="stylesheet">
@@ -40,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 <body>
@@ -172,6 +175,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li>
                             <a href="{{ route('admin.product.index') }}" class=" hvr-bounce-to-right"><i class="fa fa-file-o nav_icon"></i> <span class="nav-label">Товары</span> </a>
+                        </li>
+                        <li>
+                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-money nav_icon"></i> <span class="nav-label">Конвертер валют</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="{{ route('admin.cur_exchange_nbrb') }}" class=" hvr-bounce-to-right"> <i class="fa fa-ruble nav_icon"></i>НБРБ</a></li>
+                                <li><a href="maps.html" class=" hvr-bounce-to-right"><i class="fa fa-dollar nav_icon"></i>Лучший курс</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span class="nav-label">Menu Levels</span><span class="fa arrow"></span></a>
