@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => 'auth:sanctum'], function() {
+    Route::apiResource('article', \App\Http\Controllers\API\ArticleController::class);
+    Route::post('users/writer', [\App\Http\Controllers\API\ArticleController::class, 'createWriter']);
+    Route::post('users/subscriber', [\App\Http\Controllers\API\ArticleController::class, 'createSubscriber']);
+    Route::delete('users/{id}', [\App\Http\Controllers\API\ArticleController::class, 'deleteUser']);
+});

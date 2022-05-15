@@ -65,6 +65,16 @@ Route::name('admin.')
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class)->except(['show']);
     });
 
+Route::get('dashboard', function () {
+    if(Auth::check() && Auth::id() === 1){
+        return auth()
+            ->user()
+            ->createToken('auth_token', ['admin'])
+            ->plainTextToken; // 1|VNvYVZLheg8aIDXlaoqgrCxxmh08jYOXxildS61e
+    }
+    return redirect("/");
+})->middleware('auth');
+
 //Route::get('add-role', function () {
 //    Role::create(['name' => 'admin']);
 //    $role = Role::findByName('admin');
