@@ -44,6 +44,17 @@ Route::middleware('role:admin')
 Route::middleware('role:admin')
     ->delete('admin/articles/{id}/delete', [\App\Http\Controllers\Admin\ArticleController::class, 'delete'])
     ->name('admin.delete_article');
+Route::get('admin/cur_exchange_nbrb', [\App\Http\Controllers\Admin\CurrencyExchangeController::class, 'exchangeNbrb'])
+    ->name('admin.cur_exchange_nbrb');
+
+Route::get('test', function (\Illuminate\Http\Request $request) {
+    $response = \Illuminate\Support\Facades\Http::withOptions(['verify' => false])
+        ->get('https://www.nbrb.by/api/exrates/rates?periodicity=0');
+    foreach ($response->json() as $currency) {
+        dump($currency);
+    }
+    dd($response->collect());
+});
 
 Route::name('admin.')
     ->middleware('role:admin')
